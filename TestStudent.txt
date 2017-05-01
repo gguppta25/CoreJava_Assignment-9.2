@@ -1,0 +1,83 @@
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class TestStudent {
+	
+	public static void main(String[] args) {
+		
+	
+		
+		List<Student>  s=new ArrayList<Student>();
+		s.add(new Student(10, "Gaurav", "Math"));
+		s.add(new Student(10, "Gaurav", "Math"));
+		s.add(new Student(19, "Sanchi", "Android"));
+		s.add(new Student(14, "Mrinal", "Biology"));
+		s.add(new Student(10, "Gaurav", "Math"));
+		
+		 List<Student> list= new ArrayList();
+		 
+		  list.addAll(s);
+		  
+		  
+		   Set empIds= new HashSet();//flag that keeps student ids
+		  
+		  for(Iterator it=list.listIterator();it.hasNext();){
+		  Student stu=(Student)it.next();
+		  
+		   
+		   if(empIds.add(stu.getRoll_no())==false){//if found duplicate remove from the list
+		    it.remove();
+		   }
+		  }
+		  
+		  for(Student stu:list){
+		   System.out.println(stu.getRoll_no());
+		   System.out.println(stu.getName());
+		  }
+		  
+		 
+		
+	}}
+
+// Student Data
+class Student {
+	int roll_no;
+String name;
+String subject;
+
+public Student(int rollno,String name,String subject ) {
+	this.roll_no=rollno;
+	this.name=name;
+	this.subject=subject;
+}
+public String toString(){
+	return name+""+roll_no+""+subject;
+	
+	
+	
+
+}
+public int getRoll_no() {
+	return roll_no;
+}
+public void setRoll_no(int roll_no) {
+	this.roll_no = roll_no;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getSubject() {
+	return subject;
+}
+public void setSubject(String subject) {
+	this.subject = subject;
+}
+
+}
